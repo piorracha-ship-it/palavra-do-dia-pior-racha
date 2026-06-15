@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Palavra do Dia — Pior Racha</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-badge">⚽ PIOR RACHA</div>
+    <div class="header-sub">Treino oficial da resenha</div>
+  </header>
+
+  <main class="container">
+
+    <section class="card-word">
+      <div class="label-date" id="datahoje"></div>
+
+      <h1 class="titulo">Palavra do Dia</h1>
+
+      <div class="word-block" id="wordBlock">
+        <div class="word-display" id="wordDisplay">—</div>
+        <div class="no-word hidden" id="noWord">
+          📭 Nenhuma palavra cadastrada para hoje. Chega amanhã, molecão.
+        </div>
+      </div>
+
+      <button class="btn-copy" id="btnCopy" onclick="copiarPalavra()">
+        📋 Copiar Palavra
+      </button>
+      <div class="copy-feedback hidden" id="copyFeedback">✅ Copiado!</div>
+    </section>
+
+    <section class="card-rules">
+      <h2 class="rules-title">📜 Regras do Desafio</h2>
+      <ul class="rules-list">
+<li>📅 A palavra muda todo dia à meia-noite (horário de Brasília).</li>
+<li>🎥 Grave um vídeo do treino no mesmo dia.</li>
+<li>🗣️ Fale a palavra do dia durante o vídeo.</li>
+<li>👤 Seu rosto precisa aparecer.</li>
+<li>🏋️ O treino ou equipamento da academia deve aparecer.</li>
+<li>🚫 Não vale vídeo antigo, foto, print ou vídeo sem rosto.</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    Feito pra quem joga na lama e ama o jogo ⚽
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

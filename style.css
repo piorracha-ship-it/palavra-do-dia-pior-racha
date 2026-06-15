@@ -1,0 +1,288 @@
+/* ========================================
+   PALAVRA DO DIA — PIOR RACHA
+   Paleta: campo à noite, grama molhada
+   ======================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500&display=swap');
+
+:root {
+  --verde-gramado:   #1a7c3e;
+  --verde-neon:      #39ff6a;
+  --verde-escuro:    #0d2e1a;
+  --verde-medio:     #144d28;
+  --preto:           #080f0a;
+  --branco:          #f0faf3;
+  --amarelo-placar:  #f5c400;
+  --cinza-lama:      #2e3b2f;
+  --radius:          6px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  background-color: var(--preto);
+}
+
+body {
+  font-family: 'Barlow', sans-serif;
+  background-color: var(--preto);
+  color: var(--branco);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  /* Textura de grama sutil via gradiente */
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(26,124,62,0.04) 0px,
+    rgba(26,124,62,0.04) 24px,
+    transparent 24px,
+    transparent 48px
+  );
+}
+
+/* ── HEADER ── */
+.header {
+  background-color: var(--verde-escuro);
+  border-bottom: 3px solid var(--verde-gramado);
+  text-align: center;
+  padding: 18px 16px 14px;
+  position: relative;
+}
+
+.header::before,
+.header::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 4px;
+  background: var(--verde-neon);
+}
+.header::before { left: 0; }
+.header::after  { right: 0; }
+
+.header-badge {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: clamp(1.4rem, 5vw, 2rem);
+  color: var(--verde-neon);
+  letter-spacing: 0.12em;
+  text-shadow: 0 0 14px rgba(57,255,106,0.55);
+}
+
+.header-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--verde-gramado);
+  margin-top: 4px;
+}
+
+/* ── CONTAINER ── */
+.container {
+  flex: 1;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 32px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ── CARD PALAVRA ── */
+.card-word {
+  background: var(--verde-escuro);
+  border: 2px solid var(--verde-gramado);
+  border-radius: var(--radius);
+  padding: 32px 24px 28px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* linhas de campo no fundo do card */
+.card-word::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(57,255,106,0.07);
+  pointer-events: none;
+}
+
+.label-date {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--verde-gramado);
+  margin-bottom: 10px;
+}
+
+.titulo {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: clamp(1.2rem, 4vw, 1.6rem);
+  color: var(--branco);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  opacity: 0.85;
+}
+
+/* ── PALAVRA EM DESTAQUE ── */
+.word-display {
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: clamp(2.8rem, 12vw, 5.5rem);
+  color: var(--verde-neon);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  text-shadow:
+    0 0 18px rgba(57,255,106,0.7),
+    0 0 40px rgba(57,255,106,0.3);
+  padding: 16px 0 20px;
+  word-break: break-word;
+  animation: pulse-word 3s ease-in-out infinite;
+}
+
+@keyframes pulse-word {
+  0%, 100% { text-shadow: 0 0 18px rgba(57,255,106,0.7), 0 0 40px rgba(57,255,106,0.3); }
+  50%       { text-shadow: 0 0 28px rgba(57,255,106,1),   0 0 60px rgba(57,255,106,0.55); }
+}
+
+.no-word {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--cinza-lama);
+  border: 2px dashed var(--cinza-lama);
+  border-radius: var(--radius);
+  padding: 20px 16px;
+  line-height: 1.5;
+  margin: 8px 0 16px;
+}
+
+/* ── BOTÃO COPIAR ── */
+.btn-copy {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 12px 32px;
+  background: var(--verde-gramado);
+  color: var(--preto);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.18s, transform 0.12s, box-shadow 0.18s;
+  box-shadow: 0 3px 0 #0a3d1e;
+}
+
+.btn-copy:hover {
+  background: var(--verde-neon);
+  box-shadow: 0 3px 0 #1a7c3e, 0 0 16px rgba(57,255,106,0.4);
+}
+
+.btn-copy:active {
+  transform: translateY(2px);
+  box-shadow: 0 1px 0 #0a3d1e;
+}
+
+.btn-copy.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.copy-feedback {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--verde-neon);
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+  height: 20px;
+  transition: opacity 0.3s;
+}
+
+/* ── CARD REGRAS ── */
+.card-rules {
+  background: var(--verde-medio);
+  border: 2px solid #1d5c32;
+  border-radius: var(--radius);
+  padding: 24px 22px;
+}
+
+.rules-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--amarelo-placar);
+  margin-bottom: 16px;
+}
+
+.rules-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.rules-list li {
+  font-family: 'Barlow', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--branco);
+  line-height: 1.5;
+  padding-left: 4px;
+  border-left: 3px solid var(--verde-gramado);
+  padding-left: 12px;
+}
+
+.rules-list li strong {
+  color: var(--verde-neon);
+  font-weight: 700;
+}
+
+/* ── FOOTER ── */
+.footer {
+  text-align: center;
+  padding: 18px 16px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #2e4a32;
+  border-top: 1px solid #1a3320;
+}
+
+/* ── UTILITÁRIOS ── */
+.hidden {
+  display: none !important;
+}
+
+/* ── RESPONSIVIDADE ── */
+@media (max-width: 420px) {
+  .card-word  { padding: 24px 14px 22px; }
+  .card-rules { padding: 18px 14px; }
+  .btn-copy   { padding: 12px 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .word-display { animation: none; }
+}
