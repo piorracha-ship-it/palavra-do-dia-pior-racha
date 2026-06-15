@@ -17,6 +17,7 @@ const palavrasPorData = {
   "2025-01-03": "FINTA",
 
   /* ── Semana de exemplo a partir de hoje ── */
+   "2026-06-14": "BAGRICE",
   "2026-06-16": "BAGRICE",
 "2026-06-17": "CANELA",
 "2026-06-18": "DM",
